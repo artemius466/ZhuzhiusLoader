@@ -14,6 +14,7 @@ public class ZhuzhiusLoader : BaseUnityPlugin
 {
     private const string DownloadUrl = "https://github.com/artemius466/ZhuzhiusPublic/raw/refs/heads/main/Zhuzhius.dll"; // URL к .dll
     private const string TargetPluginPath = "BepInEx/plugins/Zhuzhius.dll";
+    private const bool TestingMode = false;
 
     void Start()
     {
@@ -35,14 +36,14 @@ public class ZhuzhiusLoader : BaseUnityPlugin
         {
             try
             {
-                File.Delete(Path.GetFullPath(TargetPluginPath));
+                if (!TestingMode) File.Delete(Path.GetFullPath(TargetPluginPath));
             }
             catch (Exception ex)
             {
                 Logger.LogWarning(ex);
             }
 
-            DownloadFile();
+            if (!TestingMode) DownloadFile();
 
             Assembly assembly = Assembly.LoadFile(Path.GetFullPath(TargetPluginPath));
 
