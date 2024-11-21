@@ -18,7 +18,7 @@ public class ZhuzhiusLoader : BaseUnityPlugin
 
     void Start()
     {
-        Logger.LogInfo("Harmony Dynamic Loader started.");
+        Logger.LogInfo("Zhuzhius Loader started.");
         DownloadAndLoadPlugin();
     }
 
